@@ -1,0 +1,131 @@
+OFXHEADER:100
+DATA:OFXSGML
+VERSION:102
+SECURITY:NONE
+ENCODING:USASCII
+CHARSET:1252
+COMPRESSION:NONE
+OLDFILEUID:NONE
+NEWFILEUID:NONE
+
+<OFX>
+<!-- The header above is OFX 1.x style: plain KEY:VALUE lines, no tags.
+     DATA:OFXSGML and VERSION:102 mean an SGML body written to OFX 1.0.2.
+     In SGML style, single values have no closing tag; aggregates do. -->
+
+<!-- SIGN-ON BLOCK: who built the file and when. -->
+<SIGNONMSGSRSV1>
+<SONRS>
+<STATUS>
+<CODE>0
+<SEVERITY>INFO
+</STATUS>
+<DTSERVER>20261001080000.000[-4:EDT]
+<LANGUAGE>ENG
+<FI>
+<ORG>Example Bank
+<FID>1234
+</FI>
+<!-- INTU.BID is Intuit's ID for the bank. This tag is what makes an OFX
+     file a QFX file. Quicken checks it against its list of banks that take
+     part in Web Connect and can refuse a file whose bank is not listed. -->
+<INTU.BID>1234
+</SONRS>
+</SIGNONMSGSRSV1>
+
+<!-- BANK STATEMENT BLOCK -->
+<BANKMSGSRSV1>
+<STMTTRNRS>
+<TRNUID>1
+<STATUS>
+<CODE>0
+<SEVERITY>INFO
+</STATUS>
+<STMTRS>
+<!-- Every amount below is in U.S. dollars. -->
+<CURDEF>USD
+<!-- The account. Quicken uses the account number to route the file.
+     Routing and account numbers here are made up. -->
+<BANKACCTFROM>
+<BANKID>999999999
+<ACCTID>000123456789
+<ACCTTYPE>CHECKING
+</BANKACCTFROM>
+
+<!-- TRANSACTIONS: the date range the download covers, then one STMTTRN per
+     transaction. Amounts are signed by their effect on the account: money
+     out is negative. TRNTYPE is a label; the sign decides direction.
+     FITID is the bank's ID for the transaction, unique within this account,
+     and is how importers skip transactions they already have. NAME is cut
+     to 32 characters at most. -->
+<BANKTRANLIST>
+<DTSTART>20260901
+<DTEND>20260930
+
+<!-- 1. A card purchase. -->
+<STMTTRN>
+<TRNTYPE>DEBIT
+<DTPOSTED>20260902120000.000[-4:EDT]
+<TRNAMT>-64.18
+<FITID>20260902-000101
+<NAME>MAPLE STREET GROCERY
+<MEMO>POS PURCHASE
+</STMTTRN>
+
+<!-- 2. A payroll deposit: positive because money came in. -->
+<STMTTRN>
+<TRNTYPE>CREDIT
+<DTPOSTED>20260905120000.000[-4:EDT]
+<TRNAMT>1850.00
+<FITID>20260905-000044
+<NAME>PAYROLL DEPOSIT EXAMPLE CO
+</STMTTRN>
+
+<!-- 3. A paper check, with its check number. -->
+<STMTTRN>
+<TRNTYPE>CHECK
+<DTPOSTED>20260910120000.000[-4:EDT]
+<TRNAMT>-400.00
+<FITID>20260910-000317
+<CHECKNUM>1042
+<NAME>CHECK 1042
+</STMTTRN>
+
+<!-- 4. An online purchase. -->
+<STMTTRN>
+<TRNTYPE>DEBIT
+<DTPOSTED>20260915120000.000[-4:EDT]
+<TRNAMT>-129.99
+<FITID>20260915-000208
+<NAME>EXAMPLE ONLINE STORE
+<MEMO>WEB PURCHASE
+</STMTTRN>
+
+<!-- 5. A monthly service charge from the bank. -->
+<STMTTRN>
+<TRNTYPE>SRVCHG
+<DTPOSTED>20260930120000.000[-4:EDT]
+<TRNAMT>-12.00
+<FITID>20260930-000009
+<NAME>MONTHLY SERVICE FEE
+</STMTTRN>
+</BANKTRANLIST>
+
+<!-- BALANCES: only the end of the range. The five transactions net to
+     +1243.83, so the account must have started at 2000.00, but that opening
+     balance appears nowhere in the file. A QFX file cannot prove on its own
+     that no transaction is missing. A PDF statement prints both ends. -->
+<LEDGERBAL>
+<BALAMT>3243.83
+<DTASOF>20260930
+</LEDGERBAL>
+<!-- Available balance: what the bank says can be spent on that date.
+     Lower here, as if a hold were pending. -->
+<AVAILBAL>
+<BALAMT>3143.83
+<DTASOF>20260930
+</AVAILBAL>
+</STMTRS>
+</STMTTRNRS>
+</BANKMSGSRSV1>
+</OFX>

@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?OFX OFXHEADER="200" VERSION="220" SECURITY="NONE" OLDFILEUID="NONE" NEWFILEUID="NONE"?>
+<!--
+  Fictional OFX 2.2 credit card statement download for "Example Card".
+  Every name, number and amount in this file is made up.
+  2.x files are XML: every element has a closing tag.
+  The XML declaration on line 1 is how you tell a 2.x file from a 1.x
+  (SGML) file, whose first line is OFXHEADER:100.
+-->
+<OFX>
+  <!-- Sign-on response: CODE 0 means the file was built without error. -->
+  <SIGNONMSGSRSV1>
+    <SONRS>
+      <STATUS>
+        <CODE>0</CODE>
+        <SEVERITY>INFO</SEVERITY>
+      </STATUS>
+      <!-- Built 9:30 am Central Daylight Time, October 1, 2026 (14:30 GMT). -->
+      <DTSERVER>20261001093000.000[-5:CDT]</DTSERVER>
+      <LANGUAGE>ENG</LANGUAGE>
+      <FI>
+        <ORG>EXAMPLE CARD</ORG>
+        <FID>99999</FID>
+      </FI>
+    </SONRS>
+  </SIGNONMSGSRSV1>
+
+  <!-- Credit cards use CREDITCARDMSGSRSV1 / CCSTMTTRNRS / CCSTMTRS.
+       Bank accounts would use BANKMSGSRSV1 / STMTTRNRS / STMTRS. -->
+  <CREDITCARDMSGSRSV1>
+    <CCSTMTTRNRS>
+      <TRNUID>1001</TRNUID>
+      <STATUS>
+        <CODE>0</CODE>
+        <SEVERITY>INFO</SEVERITY>
+      </STATUS>
+      <CCSTMTRS>
+        <CURDEF>USD</CURDEF>
+        <!-- Card accounts have no BANKID (routing number), only ACCTID. -->
+        <CCACCTFROM>
+          <ACCTID>XXXXXXXXXXXX1234</ACCTID>
+        </CCACCTFROM>
+
+        <BANKTRANLIST>
+          <!-- The period the bank says the list covers. -->
+          <DTSTART>20260901</DTSTART>
+          <DTEND>20260930</DTEND>
+
+          <!-- 1. Purchase. On a card, purchases are NEGATIVE:
+                  they add to the amount owed.
+                  Date only, so it is read as midnight GMT on Sept 3. -->
+          <STMTTRN>
+            <TRNTYPE>DEBIT</TRNTYPE>
+            <DTPOSTED>20260903</DTPOSTED>
+            <TRNAMT>-42.17</TRNAMT>
+            <FITID>EXC2609030001</FITID>
+            <NAME>NORTHSIDE COFFEE ROASTERS</NAME>
+          </STMTTRN>
+
+          <!-- 2. Purchase with a full timestamp and time zone:
+                  12:15 pm Pacific Daylight Time, Sept 11. -->
+          <STMTTRN>
+            <TRNTYPE>DEBIT</TRNTYPE>
+            <DTPOSTED>20260911121500.000[-7:PDT]</DTPOSTED>
+            <TRNAMT>-318.40</TRNAMT>
+            <FITID>EXC2609110002</FITID>
+            <NAME>EXAMPLE AIR 0047</NAME>
+            <MEMO>ONLINE BOOKING</MEMO>
+          </STMTTRN>
+
+          <!-- 3. Merchant refund. POSITIVE: it reduces the amount owed. -->
+          <STMTTRN>
+            <TRNTYPE>CREDIT</TRNTYPE>
+            <DTPOSTED>20260915</DTPOSTED>
+            <TRNAMT>25.00</TRNAMT>
+            <FITID>EXC2609150003</FITID>
+            <NAME>NORTHSIDE OFFICE SUPPLY</NAME>
+            <MEMO>RETURN</MEMO>
+          </STMTTRN>
+
+          <!-- 4. Payment to the card. POSITIVE. -->
+          <STMTTRN>
+            <TRNTYPE>CREDIT</TRNTYPE>
+            <DTPOSTED>20260922</DTPOSTED>
+            <TRNAMT>1200.00</TRNAMT>
+            <FITID>EXC2609220004</FITID>
+            <NAME>PAYMENT THANK YOU</NAME>
+          </STMTTRN>
+
+          <!-- 5. Interest charged. TRNTYPE INT is only a label;
+                  the negative sign is what makes it a charge.
+                  Interest earned on savings would also be INT, but positive. -->
+          <STMTTRN>
+            <TRNTYPE>INT</TRNTYPE>
+            <DTPOSTED>20260930</DTPOSTED>
+            <TRNAMT>-19.62</TRNAMT>
+            <FITID>EXC2609300005</FITID>
+            <NAME>INTEREST CHARGE PURCHASES</NAME>
+          </STMTTRN>
+        </BANKTRANLIST>
+
+        <!-- Closing balance owed on Sept 30. NEGATIVE because it is money owed.
+             There is no opening balance anywhere in an OFX statement download.
+             Sum of TRNAMT above = 844.81, so the implied opening balance is
+             -655.19 - 844.81 = -1500.00. Check that against the previous
+             period's closing balance; the file cannot prove it on its own. -->
+        <LEDGERBAL>
+          <BALAMT>-655.19</BALAMT>
+          <DTASOF>20260930</DTASOF>
+        </LEDGERBAL>
+      </CCSTMTRS>
+    </CCSTMTTRNRS>
+  </CREDITCARDMSGSRSV1>
+</OFX>
