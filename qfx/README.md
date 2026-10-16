@@ -2,10 +2,12 @@
 
 A QFX file is a bank or credit card download made for Quicken's Web Connect
 import. It is plain OFX text with one extra tag from Intuit, `INTU.BID`, which
-identifies the bank. Each transaction sits in an `STMTTRN` record with a posted
-date, a signed amount, a payee name and a `FITID`, the bank's unique ID for that
-transaction on that account. A plain-English walkthrough of the format is in
-ZeraBooks' guide, [What is a QFX file?](https://www.zerabooks.com/what-is-a-qfx-file)
+identifies the bank. Each transaction sits in an `STMTTRN` record with a date,
+a signed amount, a payee and a `FITID`.
+
+The `FITID` is the bank's unique ID for that transaction on that account. A
+plain-English walkthrough of the format is in ZeraBooks' guide,
+[What is a QFX file?](https://www.zerabooks.com/what-is-a-qfx-file)
 
 ## Files in this folder
 
@@ -46,3 +48,23 @@ only. Strip them before testing an import, because some readers reject comments.
   history, but each bank decides how much it serves; many give about 90 days
   through Web Connect.
 
+## FAQ
+
+### Is a QFX file the same as an OFX file?
+
+Almost. A QFX file is an OFX file with Intuit's tags added, mainly `INTU.BID`.
+Most programs that read OFX also read QFX, but Quicken looks for the Intuit tags
+and expects the bank to be one it supports.
+
+### Why does Quicken say my QFX file is from an unsupported bank?
+
+Quicken checks the `INTU.BID` in the file against the banks that take part in
+Web Connect. If the bank is not on that list, or the file has no `INTU.BID`,
+Quicken can refuse it even when the transactions inside are fine. Ask the bank
+whether it still supports Quicken downloads.
+
+### Does a QFX file include the opening balance?
+
+No. It carries the transactions for the date range and the ledger and available
+balances at the end. Proving a month is complete needs both ends, which the PDF
+statement prints.

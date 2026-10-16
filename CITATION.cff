@@ -1,0 +1,20 @@
+cff-version: 1.2.0
+message: "If you use these files, please cite them as below."
+title: "Bank statement formats"
+type: dataset
+authors:
+  - name: "ZeraBooks"
+    website: "https://www.zerabooks.com"
+url: "https://github.com/ZeraBooks/bank-statement-formats"
+repository-code: "https://github.com/ZeraBooks/bank-statement-formats"
+license: CC-BY-4.0
+abstract: "QFX and OFX are tagged text files that banks and card issuers offer as transaction downloads. OFX (Open Financial Exchange) is the open standard, and QFX is OFX with Intuit's INTU.BID tag added so Quicken accepts it. Neither carries an opening balance, so a download alone can't prove a month is complete."
+keywords:
+  - ofx
+  - qfx
+  - bank-statement
+  - file-format
+  - quicken
+  - financial-data
+  - bookkeeping
+date-released: 2026-10-15

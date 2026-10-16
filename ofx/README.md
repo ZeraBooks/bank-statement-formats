@@ -5,10 +5,11 @@
 An OFX file is a bank, credit card or brokerage download in Open Financial
 Exchange, a format Microsoft, Intuit and CheckFree announced in January 1997.
 It is tagged plain text: SGML in versions 1.0 to 1.6, XML from version 2.0
-(the current banking version is 2.3). Each transaction is an `STMTTRN` record
-with a posting date (`DTPOSTED`), a signed amount (`TRNAMT`) and a unique ID
-(`FITID`). The specification has been maintained by the Financial Data
-Exchange (FDX) since 2019.
+(the current banking version is 2.3).
+
+Each transaction is an `STMTTRN` record with a posting date (`DTPOSTED`), a
+signed amount (`TRNAMT`) and a unique ID (`FITID`). The specification has been
+maintained by the Financial Data Exchange (FDX) since 2019.
 
 ## Files in this folder
 
@@ -48,6 +49,26 @@ All data here is made up. No real issuer, account or person.
 ## Reading OFX in code
 
 The open-source Python library `ofxtools` reads both 1.x and 2.x, and QFX.
+
+## FAQ
+
+### Is OFX still used?
+
+Yes. Banks, card issuers and brokerages still offer OFX, QFX and QBO downloads,
+and the Financial Data Exchange says OFX is in use at over 7,000 financial
+institutions. Newer bank connections run on APIs, but a file download is still
+the fallback when a connection breaks.
+
+### Is a QBO file an OFX file?
+
+Yes. A QBO file is the QuickBooks Web Connect format, which is OFX with Intuit's
+tags added. ZeraBooks does not read or create QBO files.
+
+### Can I edit an OFX file by hand?
+
+You can, in any text editor, but a wrong tag or a flipped sign makes the import
+fail or post the wrong way. If one transaction is wrong, it is usually safer to
+import the file and fix that transaction in your software.
 
 ## More
 
