@@ -1,6 +1,7 @@
 # Bank statement formats
 
-QFX and OFX are tagged text files that banks and card issuers offer as
+Bank-by-bank PDF statement layouts (Chase, Bank of America, Wells Fargo) and
+sample download files. QFX and OFX are tagged text files that banks and card issuers offer as
 transaction downloads. OFX (Open Financial Exchange) is the open standard, and
 QFX is OFX with Intuit's `INTU.BID` tag added so Quicken accepts it. Neither
 carries an opening balance, so a download alone can't prove a month is
@@ -10,6 +11,9 @@ complete.
 |---|---|---|
 | [`qfx/`](qfx/) | Quicken Web Connect (OFX with Intuit's INTU.BID tag) | [What is a QFX file? The format line by line](https://www.zerabooks.com/what-is-a-qfx-file) |
 | [`ofx/`](ofx/) | Open Financial Exchange, 1.x SGML and 2.x XML | [What is an OFX file? How the format is put together](https://www.zerabooks.com/what-is-an-ofx-file) |
+| [`chase/`](chase/) | Chase business checking PDF layout, with a converted sample month | [Chase bank statement to Excel](https://www.zerabooks.com/chase-bank-statement-to-excel) |
+| [`bank-of-america/`](bank-of-america/) | Bank of America business statement layout and how its section names changed | [Bank of America statement to Excel](https://www.zerabooks.com/bank-of-america-statement-to-excel) |
+| [`wells-fargo/`](wells-fargo/) | Wells Fargo's single transaction table with separate credit and debit columns | [Wells Fargo statement to Excel](https://www.zerabooks.com/wells-fargo-bank-statement-to-excel) |
 
 Every bank name, account number, payee and amount in these files is made up.
 
