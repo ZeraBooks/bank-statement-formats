@@ -1,6 +1,6 @@
 # Bank statement formats
 
-Bank-by-bank PDF statement layouts (Chase, Bank of America, Wells Fargo) and
+Bank-by-bank PDF statement layouts (Chase, Bank of America, Wells Fargo, Capital One) and
 sample download files. QFX and OFX are tagged text files that banks and card issuers offer as
 transaction downloads. OFX (Open Financial Exchange) is the open standard, and
 QFX is OFX with Intuit's `INTU.BID` tag added so Quicken accepts it. Neither
@@ -14,6 +14,7 @@ complete.
 | [`chase/`](chase/) | Chase business checking PDF layout, with a converted sample month | [Chase bank statement to Excel](https://www.zerabooks.com/chase-bank-statement-to-excel) |
 | [`bank-of-america/`](bank-of-america/) | Bank of America business statement layout and how its section names changed | [Bank of America statement to Excel](https://www.zerabooks.com/bank-of-america-statement-to-excel) |
 | [`wells-fargo/`](wells-fargo/) | Wells Fargo's single transaction table with separate credit and debit columns | [Wells Fargo statement to Excel](https://www.zerabooks.com/wells-fargo-bank-statement-to-excel) |
+| [`capital-one/`](capital-one/) | Capital One credit card statement: which sections become rows and how the card proof works | [Capital One statement to Excel](https://www.zerabooks.com/capital-one-statement-to-excel) |
 
 Every bank name, account number, payee and amount in these files is made up.
 

@@ -1,0 +1,7 @@
+Date,Description,Type,Amount
+2026-09-02,Payment received,Payment,3846.20
+2026-09-05,Restaurant depot,Charge,-412.18
+2026-09-11,Espresso machine service,Charge,-1265.00
+2026-09-14,Point-of-sale software,Charge,-89.99
+2026-09-20,"Coffee roaster, wholesale",Charge,-2031.47
+2026-09-23,"Refund, restaurant depot",Credit,65.00
