@@ -16,6 +16,7 @@ complete.
 | [`wells-fargo/`](wells-fargo/) | Wells Fargo's single transaction table with separate credit and debit columns | [Wells Fargo statement to Excel](https://www.zerabooks.com/wells-fargo-bank-statement-to-excel) |
 | [`capital-one/`](capital-one/) | Capital One credit card statement: which sections become rows and how the card proof works | [Capital One statement to Excel](https://www.zerabooks.com/capital-one-statement-to-excel) |
 | [`rbc/`](rbc/) | RBC Royal Bank business chequing: debit and credit columns, dates without a year, a sample month in CAD | [Bank statement converter](https://www.zerabooks.com/bank-statement-converter) |
+| [`td/`](td/) | TD Canada Trust business chequing: same debit and credit pattern with a different column order, a sample month in CAD | [Bank statement converter](https://www.zerabooks.com/bank-statement-converter) |
 
 Every bank name, account number, payee and amount in these files is made up.
 
