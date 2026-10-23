@@ -20,6 +20,27 @@ complete.
 
 Every bank name, account number, payee and amount in these files is made up.
 
+## Check every sample month
+
+`balances.csv` lists each sample's printed opening and closing balance.
+`check_samples.py` proves every month against them, and also checks the CSV
+shape: the header `Date,Description,Type,Amount`, ISO dates inside one
+calendar month, two-decimal amounts and no blank descriptions.
+
+```
+$ python3 check_samples.py
+chase            USD   6 rows     8642.18 ->    9877.33  ties
+bank-of-america  USD   6 rows    21406.90 ->   24311.35  ties
+wells-fargo      USD   5 rows     5318.44 ->    8191.26  ties
+capital-one      USD   6 rows     3846.20 ->    3733.64  ties
+rbc              CAD   6 rows     8240.19 ->   10742.35  ties
+td               CAD   5 rows     3105.60 ->    5883.12  ties
+```
+
+Run it on your own conversion by adding a folder and a row to `balances.csv`.
+A month that doesn't tie prints the gap, which is usually one misread or missing
+row. Python 3, standard library only.
+
 ## How to use these files
 
 - Open a `.qfx` or `.ofx` file in any text editor. The comments explain each
